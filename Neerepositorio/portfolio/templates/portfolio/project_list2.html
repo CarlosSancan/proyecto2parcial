@@ -1,0 +1,64 @@
+{% extends 'core/base.html'  %}
+{% block title %} Proyectos {% endblock %}
+{% block background %}{% load static %}{% static 'core/img/Educación-Inclusiva.png' %}{% endblock %}
+{% block header %}
+<h1>Proyectos</h1>
+  <p>
+          <form method="GET" enctype="multipart/form-data">{% csrf_token %} 
+                  <input type="text" id="buscar" name="buscar" placeholder="Ingrese nombre">
+                  <button type="submit" action="">Buscar</button>
+          </form>
+        </p>
+{% endblock header %}
+{% block content %}
+  {% include 'portfolio/includes/project_menu.html'%} 
+<style>.profile-avatar{float:left;width:4rem;height:4rem}.profile-data{padding-left:4.5rem;padding-top:.4rem;}</style>
+  
+    <div class="grid-container">
+    <div class="cell grid-x">
+    <form class="cell grid-x grid-margin-x" method="GET">{% csrf_token %}
+           <div class="cell large-7">
+              <input type="text" id="Kword" name="Kword" placeholder="Ingrese nombre">
+          </div>
+          <div class="cell large-2">
+           <button type="submit" class="btn btn-success">Buscar</button>
+          </div>
+    </form>
+    <div class="cell">
+         <table class="hover">
+      <thead>
+        <th width="150">Imagen</th>
+        <th width="150">Nombres</th>
+        <th width="200">Detalles</th>
+      </thead>
+      <tbody>
+        {% for  project in object_list %}
+          <tr>
+            <td>{% if project.image %}
+                   <img src="{{project.image.url}}" class="img-fluid profile-avatar">
+                  {% else %}
+                   <img src="{% static 'registration/img/no-avatar.jpg' %}" class="img-fluid profile-avatar">
+                  {% endif %}</td>
+                  
+            <td>{{project.title}}</td>
+            <td><a  class="btn btn-success"href="{% url 'portfolio:detalles' project.id project.title|slugify %}">Más información</a></td>
+            <td>
+               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for listing in listing_filter.qs %}     
+                <div class="col">
+                    {% include "templates\portfolio\project_list.html" %}
+                </div>
+                {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+  

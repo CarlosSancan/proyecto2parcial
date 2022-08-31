@@ -1,0 +1,25 @@
+{% extends 'core/base.html'  %}
+{% block title %} Proyectos {% endblock %}
+{% block background %}{% load static %}{% static 'core/img/Educación-Inclusiva.png' %}{% endblock %}
+{% block header %}
+<h1>Añadir</h1>
+<span class="subheading">Herramienta</span>
+{% endblock header %}
+{% block content %}
+{% include 'portfolio/includes/project_menu.html'%}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3 mb-5">
+      <div class="col-md-9 mx-auto">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}
+          <div class="text-center">
+            <input type="submit" class="btn btn-primary btn-block" value="Añadir Herramienta" />
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

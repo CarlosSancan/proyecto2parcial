@@ -1,0 +1,39 @@
+{% extends 'core/base.html'  %}
+{% block title %} Proyectos {% endblock %}
+{% block background %}{% load static %}{% static 'core/img/Educación-Inclusiva.png' %}{% endblock %}
+
+{% block header %}
+<h1>Actualizar</h1>
+<span class="subheading">Herramienta</span>
+{% endblock header %}
+{% block content %}
+{% include 'portfolio/includes/project_menu.html'%}
+<main role="main">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-9 mx-auto">
+        <div>
+        {% if 'ok' in request.GET  %}
+         <p class="alert alert-success">
+             Herramienta Correctamente Actualizada <i data-v-1f22f6d0="" id="icono" class="fas fa-check-circle" style="font-size: 1.40em;"></i>     
+             <br> 
+             <a color="green" href="{% url 'portfolio:detalles' project.id project.title|slugify %}">Click Para vista previa</a>
+          </p>
+
+          </span>
+
+          {% endif %} 
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <table>
+                  {{ form.as_table }}
+                </table>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Actualizar" />
+                <a class="btn btn-primary" href="{% url 'portfolio:detalles' project.id project.title|slugify%}" role="button">Atras</a>
+            </form>      
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

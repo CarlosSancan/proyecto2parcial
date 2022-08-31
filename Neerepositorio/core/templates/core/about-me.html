@@ -1,0 +1,28 @@
+{% extends 'core/base.html'  %}
+{% block title %}Acerca de{% endblock %}
+
+{% block background %}{% load static %}{% static 'core/img/contact-bg.jpg' %}{% endblock %}
+
+{% block header %}
+<h1>Acerca de</h1>
+<span class="subheading">Biografía</span>
+{% endblock header %}
+
+{% block content %}
+<div class="row">
+<div class="col-lg-3 col-md-4 offset-lg-1">
+          <img class="img-fluid avatar" src="{% static 'core/img/UGlogo.png' %}" alt="">
+        </div>
+        <div class="col-lg-7 col-md-8">
+          <h2 class="section-heading">Neerepositorio</h2>   
+          <p>Es un sitio web donde podran encontrar herramientas tipo Software, Brindara ayuda al docente  dentro del 
+ámbito Educativo, siendo una Educacion menos excluyente </p>
+          <br>
+          <p><b>Teléfono:</b> 123456789</p>
+          <p><b>Horarios:</b> 12:00 hasta 6:00</p>
+        </div>
+</div>
+
+         
+        
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'core/base.html'  %}
+{% block title %} Detalle {% endblock %}
+{% block background %}{% load static %}{% static 'core/img/Educación-Inclusiva.png' %}{% endblock %}
+{% block header %}
+<h1>Detalles</h1>
+<span class="subheading">Software</span>
+{% endblock header %}
+{% block content %}
+{% include 'portfolio/includes/project_menu.html'%}  
+	      <!-- Proyecto -->
+		  <div class="row project">  	
+	      	<div class="col-lg-3 col-md-4 offset-lg-1">
+			      <img class="img-fluid" src="{{project.image.url}}" alt="">
+	      	</div>
+	        <div class="col-lg-6 col-md-9">
+	      		<h2 class="section-heading title">{{project.title}}</h2>
+				<p>{{project.description | linebreaks }}</p>
+				 <h5>Categoria</h5>
+				 <p>{{project.get_categoria_display}}</p>
+				
+	           	<video width="400px" height="400px" controls>
+   				<source src='{{project.videos.url}}' type="video/mp4"/>
+				</video>			 
+	         	<a class="btn btn-primary" target="_blank" href="{{ project.link}}">Descarga aquí</a>
+			  {% if request.user.is_staff %}
+			  	<a class="btn btn-primary" href="{% url 'portfolio:update' project.id %}">Editar</a>
+				<a  class="btn btn-primary"  style="margin: 10px" href="{% url 'portfolio:delete' project.id %}">Eliminar</a>
+			  {% endif %}
+	      	</div>
+	    </div>
+{% endblock %}

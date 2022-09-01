@@ -8,9 +8,11 @@
                   <input type="text" id="Kword" name="Kword" placeholder="Ingrese nombre">
                   <select  id="Kword1" name="Kword1" >
                   <option>-------</option>
-                  {% for project in object_list|dictsort:"id" reversed %}
-                     <option value="{{project.id}}"> {{project.get_categoria_display}} </option>
-                  {%endfor%}
+                   
+                      {% for project in object_list %}
+                     <option value="{{project.id}}" name="{{project.categoria}}"> {{project.categoria}} </option>
+                      {% endfor %}
+                  
                   </select>
                   <button type="submit"  class="btn btn-success btn-default" action="">Buscar</button>
           </form>

@@ -15,7 +15,7 @@ class ProyectoForm(forms.ModelForm):
         widgets = {
             'title':forms.TextInput(attrs={'class':'form-control', 'placeholder':'Título'}),
             'description': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Descripcion'}),
-            'categoria': forms.Select(attrs={'class':'form-control', 'placeholder':'Categoria'}),
+            'categoria': forms.CheckboxSelectMultiple(),
             'link': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Link'}),
            
         }

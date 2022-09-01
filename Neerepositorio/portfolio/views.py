@@ -47,13 +47,13 @@ class ProyectosListView(ListView):
     ordering = 'first_name'    
     def get_queryset(self): 
         palabra_clave= self.request.GET.get("Kword",'')
+        
         lista= Project.objects.filter(
-            Q(title__icontains=palabra_clave)
-
+            title__icontains=palabra_clave, 
         )
         return lista
-    
 
+    
 class  DetalleDetailView(DetailView):
     model = Project
 
@@ -80,12 +80,6 @@ class ProyectosDeleteView(DeleteView):
 
 
 #class ListarHerramienta(Generic.ListView):
-    model= Project
-    context_object_name = 'listar herrameinta'
-    template_name = 'portfolio\project_list.html'
-    def get_queryset(self):
-        palabra_clave = self.request.POST.get("bscr", '')
-        return Project.objects.buscar_herramienta(palabra_clave)
 
 #def home(request):
  #   template_name = 'portfolio\project_list.html'

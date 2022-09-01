@@ -18,5 +18,7 @@ class ProjectAdmin(admin.ModelAdmin):
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Category)
 admin.site.register(Message)
+admin.site.register(tipoCategory)
 admin.site.register(Thread)
+
 

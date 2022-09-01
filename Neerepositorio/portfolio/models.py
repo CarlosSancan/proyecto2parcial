@@ -23,13 +23,18 @@ class Category(models.Model):
         verbose_name_plural = "categorias"
     
     def __str__(self):
-        return self.categoria
+        return str(self.categorias)
 
 
+class tipoCategory(models.Model):
+    categoria =  models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="categoria", related_name='project_categoria') 
+
+    def __str__(self):
+        return  ' - ' + str(self.categoria)
 class Project(models.Model):
     title = models.CharField(max_length=200, verbose_name="Titulo")
     description = models.TextField(verbose_name="Descripcion")
-    categoria =  models.ForeignKey(Category, on_delete=models.CASCADE, verbose_name="categoria", related_name='project_categoria' ) 
+    categoria =  models.ManyToManyField(tipoCategory) 
     image = models.ImageField(verbose_name="Imagen", upload_to="projects")
     link= models.URLField (verbose_name="Link de Descarga",null=True, blank=True)
     videos= models.FileField (verbose_name="Video Tutorial",blank=True,null=True,  upload_to="projects" )

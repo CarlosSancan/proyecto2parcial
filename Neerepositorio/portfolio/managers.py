@@ -6,7 +6,7 @@ class ProjectManager (models.Manager):
 
     def buscar_herramienta(self, buscar):
         resultado = self.filter(
-             Q(title__icontains=buscar) | Q(categoria__icontains=buscar)
+            Q(title__icontains=buscar) | Q(categoria__icontains=buscar)
         )
         return resultado 
     def listar_herramientas_categoria(self):
